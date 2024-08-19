@@ -1,5 +1,5 @@
 # NASA-s-Astronomy-Picture-of-the-Day-App
-# Build tool Microsfot visual Studio 2022 versin 17.10.6
+# Build tool Microsfot visual Studio 2022 version 17.10.6
 # steps to run : 
 you have to install microsoft visual studio 2022 or later version and .net sdk
 Install Required Tools
