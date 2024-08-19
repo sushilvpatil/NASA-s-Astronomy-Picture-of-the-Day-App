@@ -43,7 +43,7 @@ Select an iOS Simulator or a connected iOS device from the target device dropdow
 Click the green Run button (or press F5) to deploy and run the app on the selected iOS device.
 
 # how long time has spend 
-more than approx 4 hr
+ approx 4 hour
 
 # point to remember 
 there is MVVM application development Pattern is Used.
