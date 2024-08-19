@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NasaImages.View.ViewImageFullScreen" 
+              x:Name="FullScreenPage"
+             NavigationPage.HasNavigationBar="False">
+
+    <AbsoluteLayout Margin="5,5,5,5">
+        <Image Source="{Binding Url}"
+                   Aspect="Fill"
+                   AbsoluteLayout.LayoutFlags="All"
+                   AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                   IsVisible="{Binding Url}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding GoBack}" />
+            </Image.GestureRecognizers>
+        </Image>
+    </AbsoluteLayout>
+
+</ContentPage>

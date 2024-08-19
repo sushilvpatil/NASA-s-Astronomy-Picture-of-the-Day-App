@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NasaImages.View.WatchVideo"
+              xmlns:local="clr-namespace:NasaImages.Converter"
+             x:Name="WatchVideoPage"
+            Title="Watch Video"
+             BackgroundColor="LightGray">
+
+    <StackLayout VerticalOptions="CenterAndExpand"   HorizontalOptions="CenterAndExpand" >
+
+        <ActivityIndicator IsVisible="{Binding IsLoading}" IsRunning="{Binding IsLoading}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  HeightRequest="{Binding Source={x:Reference WatchVideoPage}, Path=Height, Converter={local:HeightConverter}}" />
+        <Frame IsVisible="{Binding ErrorMessageVisible}">
+            <Label Text="Video Is Not Available"  TextColor="Red" VerticalOptions="Center" HorizontalOptions="Center" />
+        </Frame>
+        <WebView IsVisible="{Binding IsVideoVisible}" Source="{Binding ApodData.Url}" HeightRequest="{Binding Source={x:Reference WatchVideoPage}, Path=Height, Converter={local:HeightConverter}}" 
+        VerticalOptions="CenterAndExpand"></WebView>
+
+        <Label Margin="0,10,0,0" Text="{Binding ApodData.Title}"
+               HorizontalOptions="Center"
+               VerticalOptions="CenterAndExpand"
+               LineBreakMode="WordWrap"  FontAttributes="Bold" />
+    </StackLayout>
+
+</ContentPage>

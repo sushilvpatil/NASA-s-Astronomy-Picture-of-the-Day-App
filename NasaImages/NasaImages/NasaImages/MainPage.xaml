@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NasaImages.MainPage"
+             x:Name="MainPageName"
+             xmlns:local="clr-namespace:NasaImages.Converter"
+             NavigationPage.HasNavigationBar="False">
+
+
+    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="LightGray" >
+
+        <StackLayout VerticalOptions="CenterAndExpand"  BackgroundColor="LightGray" HorizontalOptions="CenterAndExpand" >
+            <Label Text="NASA’s Astronomy Picture of the Day"
+             HorizontalOptions="Center"
+             VerticalOptions="CenterAndExpand"
+             LineBreakMode="WordWrap"  FontAttributes="Bold" TextColor="Black" Margin="0" Padding="0" FontSize="20" />
+
+            <!--    <WebView Source="{Binding ApodData.Url}" HeightRequest="{Binding Source={x:Reference MainPageName}, Path=Height, Converter={local:HeightConverter}}" 
+            VerticalOptions="CenterAndExpand"></WebView>  -->
+            <Frame BackgroundColor="White" >
+                <StackLayout>
+                    <ActivityIndicator IsVisible="{Binding IsLoading}" IsRunning="{Binding IsLoading}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  HeightRequest="{Binding Source={x:Reference MainPageName}, Path=Height, Converter={local:HeightConverter}}" />
+                    <Label Text="{Binding ErrorMessage}" IsVisible="{Binding ErrorMessageVisible}" TextColor="Red" VerticalOptions="Center" HorizontalOptions="Center" />
+                    <Image Source="{Binding ApodData.Url}" 
+                   Aspect="Fill"
+                   HeightRequest="{Binding Source={x:Reference MainPageName}, Path=Height, Converter={local:HeightConverter}}" 
+                   VerticalOptions="CenterAndExpand" IsVisible="{Binding IsImageVisible}" >
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ShowFullScreentImage}" CommandParameter="{Binding ApodData.Url}"  />
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                </StackLayout>
+            </Frame>
+            <Label Margin="0,10,0,0" Text="{Binding ApodData.Title}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="CenterAndExpand"
+                   LineBreakMode="WordWrap"  FontAttributes="Bold" />
+            <Button Text="Reload Image" IsVisible="{Binding ErrorMessageVisible}" Command="{ Binding ReloadImageCommand}"></Button>
+            <Button Text="Watch Video" Command="{Binding WatchVideoCommand}" IsVisible="{Binding IsWatchVideoButtonVisible}"  >
+
+            </Button>
+
+        </StackLayout>
+
+    </StackLayout>
+</ContentPage>
